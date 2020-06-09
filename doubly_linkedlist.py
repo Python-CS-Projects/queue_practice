@@ -9,7 +9,15 @@ class Node:
         self.prev = prev
         self.next = next
 
-    # Helper methods below
+    #Optional helper methods below
+    def set_next(self,value):
+        self.next = value
+
+    def set_prev(self,value):
+        self.prev = value
+
+    def get_value(self):
+        return self.value
 
 
 class DoublyLinkedList:
@@ -19,3 +27,9 @@ class DoublyLinkedList:
         self.count = 1 if node is not None else 0
 
     #Helper methods below
+
+
+
+list = DoublyLinkedList()
+
+# list
