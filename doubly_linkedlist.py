@@ -11,13 +11,17 @@ class Node:
 
     # Optional helper methods below
     def insert_after(self, value):  # Method for each node to add after it self
-        curr_next = self.next  # get the current next for itself if is the tail is None
-        self.next = Node(value, self, curr_next)  # Create a new node 1-2-3
+        curr_next = self.next  # save curr next before we change it to new value
+        # Create a new node with reference to prev as current value and next as the next of the curr value
+        self.next = Node(value, self, curr_next)
         if curr_next:  # if a current next exist
             curr_next.prev = self.next  # set the prev as the new Node created above
 
     def insert_before(self, value):
-        self.prev = value
+        curr_prev = self.prev  # save curr prev
+        self.prev = Node(value, curr_prev, self)  # set prev as new node
+        if curr_prev:  # if a curr exist meaning is not None
+            curr_prev.next = self.prev  # set curr prev next as the new node
 
     def get_value(self):
         return self.value
@@ -32,13 +36,14 @@ class DoublyLinkedList:
     # Helper methods below
     def add_to_head(self, value):
         new_node = Node(value)  # create a new node from the provided value
-        if self.head is None:  # if LL is empty
-            self.head = new_node
-            self.tail = new_node
-        else:  # if there is only one item in the LL
-            new_node.next = self.head  # set the curr head as the next val of the new node
-            self.head.prev = new_node  # set new node as prev of curr head
+        if self.length > 0:  # Not empty LL
+            self.head.insert_before(value)
+            self.head = self.head.prev
+            self.length += 1
+        elif self.length == 0:  # Empty LL
             self.head = new_node  # Set new node as new head
+            self.tail = new_node
+            self.length += 1
 
     def add_to_tail(self, value):
         new_node = Node(value)
@@ -53,18 +58,23 @@ class DoublyLinkedList:
             self.tail = new_node
             self.length += 1
 
+    def remove_from_head(self):
+        pass
+
     def get_values(self):
         curre_node = self.head
         arr = []
-        while curre_node.next is not None:
-            print(curre_node.value)
+        while curre_node is not None:
             arr.append(curre_node.value)
             curre_node = curre_node.next
         print(arr)
+        print(f"Currenty {self.length} items in the LL")
 
 
 list = DoublyLinkedList()
 
+list.add_to_head(34)
+list.add_to_head(37)
 list.add_to_tail(29)
 list.add_to_tail(88)
 list.get_values()
