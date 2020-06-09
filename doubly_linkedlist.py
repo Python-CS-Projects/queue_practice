@@ -59,7 +59,16 @@ class DoublyLinkedList:
             self.length += 1
 
     def remove_from_head(self):
-        pass
+        if self.head is None:  # If empty
+            print("Error, Doubly_Linked_List is empty")
+            return
+        elif self.head is self.tail:  # if only one item
+            self.head = None
+            self.tail = None
+        else:
+            new_head = self.head.next
+            new_head.prev = None
+            self.head = new_head
 
     def get_values(self):
         curre_node = self.head
@@ -77,4 +86,6 @@ list.add_to_head(34)
 list.add_to_head(37)
 list.add_to_tail(29)
 list.add_to_tail(88)
+list.get_values()
+list.remove_from_head()
 list.get_values()
