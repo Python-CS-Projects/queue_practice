@@ -60,19 +60,38 @@ class DoublyLinkedList:
 
     def remove_from_head(self):
         if self.head is None:  # If empty
-            print("Error, Doubly_Linked_List is empty")
+            print("Error, cannot remove from an empty list.")
             return
         elif self.head is self.tail:  # if only one item
             self.head = None
             self.tail = None
-        else:
-            new_head = self.head.next
-            new_head.prev = None
-            self.head = new_head
+            self.length = 0  # set to empty because we remove the only item
+        else:  # if more than one item
+            new_head = self.head.next  # save item after head as new head
+            new_head.prev = None  # set the prev of new head as None
+            self.head = new_head  # finally set new head
+            self.length -= 1
+
+    def remove_from_tail(self):
+        if self.tail is None:  # If empty
+            print("Error, cannot remove from an empty list.")
+            return
+        elif self.head is self.tail:  # if only one item
+            self.head = None  # set to none
+            self.tail = None  # set to none
+            self.length = 0  # set to empty because we remove the only item
+        else:  # if more than one item
+            new_tail = self.tail.prev  # save the prev of current tail
+            new_tail.next = None  # set the next of new tail as none
+            self.tail = new_tail  # finaly save the new tail as the tail
+            self.length -= 1
 
     def get_values(self):
         curre_node = self.head
         arr = []
+        if self.head is None:
+            print("Empty list.")
+            return
         while curre_node is not None:
             arr.append(curre_node.value)
             curre_node = curre_node.next
@@ -88,4 +107,5 @@ list.add_to_tail(29)
 list.add_to_tail(88)
 list.get_values()
 list.remove_from_head()
+list.remove_from_tail()
 list.get_values()
