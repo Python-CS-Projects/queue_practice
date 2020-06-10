@@ -103,9 +103,33 @@ class DoublyLinkedList:
                     prev_node.next = next_node
                     next_node.prev = prev_node
                     self.length -= 1
-                    return
+                    return True
                 curr_node = curr_node.next
             print(f"{value} not found")
+            return False
+
+    def move_to_front(self, value):
+        if self.delete(value):  # if the value is found returns true
+            self.add_to_head(value)  # add value to head
+            return True
+        else:
+            return False
+
+    def move_to_end(self, value):
+        if self.delete(value):
+            self.add_to_tail(value)
+            return True
+        else:
+            return False
+
+    def get_max(self):
+        curr_val = self.head
+        arr = []
+        while curr_val is not None:
+            arr.append(curr_val.value)
+            curr_val = curr_val.next
+        arr.sort()
+        return arr[len(arr)-1]
 
     def get_values(self):
         curre_node = self.head
@@ -121,14 +145,13 @@ class DoublyLinkedList:
 
 
 list = DoublyLinkedList()
-
-list.add_to_head(34)
-list.add_to_head(37)
+# list.add_to_head(34)
+# list.add_to_head(37)
 list.add_to_tail(29)
 list.add_to_tail(88)
 list.get_values()
-list.delete(9)
-list.get_values()
+# list.delete(9)
+# list.get_values()
 # list.remove_from_head()
 # list.remove_from_tail()
 # list.get_values()
