@@ -1,5 +1,5 @@
 '''
-Implementing a Doubly LL to use on the Queue and stack practices
+Node Class
 '''
 
 
@@ -25,6 +25,11 @@ class Node:
 
     def get_value(self):
         return self.value
+
+
+'''
+Doubly Linked List Class
+'''
 
 
 class DoublyLinkedList:

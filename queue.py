@@ -1,5 +1,9 @@
 import doubly_linkedlist as Dll
 
+'''
+FIFO: First in first out
+'''
+
 
 class Queue:
     def __init__(self):
