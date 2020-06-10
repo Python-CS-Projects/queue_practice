@@ -89,11 +89,13 @@ class DoublyLinkedList:
     def delete(self, value):
         if self.tail is None:  # If empty
             print("Error, cannot remove from an empty list.")
-            return
+            return False
         elif self.head.value == value:
             self.remove_from_head()
+            return True
         elif self.tail.value == value:
             self.remove_from_tail()
+            return True
         else:
             curr_node = self.head
             while curr_node is not None:
@@ -113,6 +115,7 @@ class DoublyLinkedList:
             self.add_to_head(value)  # add value to head
             return True
         else:
+            print(f"Value {value} not found.")
             return False
 
     def move_to_end(self, value):
@@ -120,6 +123,7 @@ class DoublyLinkedList:
             self.add_to_tail(value)
             return True
         else:
+            print(f"Value {value} not found.")
             return False
 
     def get_max(self):
@@ -129,7 +133,9 @@ class DoublyLinkedList:
             arr.append(curr_val.value)
             curr_val = curr_val.next
         arr.sort()
-        return arr[len(arr)-1]
+        maxVal = arr[len(arr)-1]
+        print(maxVal)
+        return maxVal
 
     def get_values(self):
         curre_node = self.head
@@ -140,18 +146,21 @@ class DoublyLinkedList:
         while curre_node is not None:
             arr.append(curre_node.value)
             curre_node = curre_node.next
-        print(arr)
-        print(f"Currenty {self.length} items in the LL")
+        print(f"Current list: {arr}")
+        # print(f"Currenty {self.length} items in the LL")
 
 
-list = DoublyLinkedList()
+# list = DoublyLinkedList()
 # list.add_to_head(34)
 # list.add_to_head(37)
-list.add_to_tail(29)
-list.add_to_tail(88)
-list.get_values()
+# list.add_to_tail(29)
+# list.add_to_tail(88)
+# list.get_values()
+# list.move_to_end(29)
+# list.get_values()
 # list.delete(9)
 # list.get_values()
 # list.remove_from_head()
 # list.remove_from_tail()
 # list.get_values()
+# list.get_max()
