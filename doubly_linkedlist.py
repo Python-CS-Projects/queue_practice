@@ -86,6 +86,27 @@ class DoublyLinkedList:
             self.tail = new_tail  # finaly save the new tail as the tail
             self.length -= 1
 
+    def delete(self, value):
+        if self.tail is None:  # If empty
+            print("Error, cannot remove from an empty list.")
+            return
+        elif self.head.value == value:
+            self.remove_from_head()
+        elif self.tail.value == value:
+            self.remove_from_tail()
+        else:
+            curr_node = self.head
+            while curr_node is not None:
+                if curr_node.value == value:
+                    prev_node = curr_node.prev
+                    next_node = curr_node.next
+                    prev_node.next = next_node
+                    next_node.prev = prev_node
+                    self.length -= 1
+                    return
+                curr_node = curr_node.next
+            print(f"{value} not found")
+
     def get_values(self):
         curre_node = self.head
         arr = []
@@ -106,6 +127,8 @@ list.add_to_head(37)
 list.add_to_tail(29)
 list.add_to_tail(88)
 list.get_values()
-list.remove_from_head()
-list.remove_from_tail()
+list.delete(9)
 list.get_values()
+# list.remove_from_head()
+# list.remove_from_tail()
+# list.get_values()
