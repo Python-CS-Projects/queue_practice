@@ -12,7 +12,6 @@ class Queue:
 
     def dequeue(self):  # Remove from the front of the line
         self.list.remove_from_head()
-
         if self.len > 0:
             self.len -= 1
 
@@ -23,10 +22,10 @@ class Queue:
         self.list.get_values()
 
 
-x = Queue()
-x.enqueue(1)
-x.enqueue(2)
-x.enqueue(3)
-x.dequeue()
-x.get_len()
-x.getValues()
+# x = Queue()
+# x.enqueue(1)
+# x.enqueue(2)
+# x.enqueue(3)
+# x.dequeue()
+# x.get_len()
+# x.getValues()
