@@ -9,16 +9,16 @@ class BST:
         pass
 
     def contains(self, target):  # Recursive
-        if self.value == target:
+        if self.value == target:  # Base
             return True
         elif self.value < target:
-            if not self.left:
-                return False
-            self.left.contains(target)
+            if not self.left:  # If left equals None
+                return False  # Not found
+            self.left.contains(target)  # Run contains on Left Value
         else:
-            if not self.right:
-                return False
-            self.right.contains(target)
+            if not self.right:  # If right equals None
+                return False  # Not found
+            self.right.contains(target)  # Run contains on Right Value
 
     def get_max(self):
         pass
