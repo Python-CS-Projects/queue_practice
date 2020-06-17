@@ -5,12 +5,18 @@ class BST:
         self.right = None
 
     # Methods
-    def insert(self, value):
-        if self.value < value:  # Go right
-            if self.right is None:
-                self.right = BST(value)  # Add  the new value node
-        elif self.value > value:
-            pass
+    def insert(self, newValue):
+        if self.value < newValue:  # If true go Rigth
+            if self.right is None:  # If rigth is empty
+                self.right = BST(newValue)  # Add  the new value node
+            else:  # If not empty recurse
+                self.right.insert(newValue)  # Recursion
+        elif newValue < self.value:  # If true go Left
+            if self.left is None:
+                self.left = BST(newValue)  # Add  the new value node
+            else:  # If not empty recurse
+                self.left.insert(newValue)  # Recursion
+        # At the end the stack starts returning all the recursive calls
 
     def contains(self, target):  # Recursive
         if self.value == target:  # Base case
@@ -31,7 +37,7 @@ class BST:
         pass
 
 
-bts = BST()  # Parameter = Root
+bts = BST(10)  # Parameter = Root
 bts.insert(5)
 bts.insert(2)
 bts.insert(7)
